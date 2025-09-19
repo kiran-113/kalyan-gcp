@@ -11,7 +11,7 @@ module "networking" {
       cidr_range      = "10.10.0.0/16"
       secondary_range = "192.168.10.0/24"
       create_fw_rule  = true
-      source_tags     = ["web"]
+      source_tags     = ["web", "new"]
     },
     {
       name            = "db"
@@ -19,7 +19,15 @@ module "networking" {
       cidr_range      = "10.20.0.0/16"
       secondary_range = "192.168.20.0/24"
       create_fw_rule  = false
-      source_tags     = []
+      source_tags     = ["test"]
+    },
+    {
+      name            = "app-dev"
+      subnet_region   = "asia-south1"
+      cidr_range      = "10.30.0.0/16"
+      secondary_range = "192.168.30.0/24"
+      create_fw_rule  = true
+      source_tags     = ["web"]
     }
   ]
 }
