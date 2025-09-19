@@ -32,7 +32,23 @@ module "networking" {
   ]
 }
 
+#######################
+# S3 from official Module
+module "cloud-storage" {
+  source  = "terraform-google-modules/cloud-storage/google"
+  version = "11.1.2"
+  names = ["gcs-478542", "gcs-574585", "gcs-5745856"]
+  project_id = var.project_id
+  autoclass = {
+    gcs-478542 = true}
 
+  force_destroy = {
+    gcs-574585 = true}
+
+  versioning = {
+    gcs-5745856= true
+    }
+}
 
 
 # module "dev_vpc" {
